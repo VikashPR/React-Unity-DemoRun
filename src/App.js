@@ -1,25 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
+import React from "react";
+import { Unity, useUnityContext } from "react-unity-webgl";
 
 function App() {
+  const { unityProvider } = useUnityContext({
+    loaderUrl: "UnityBuild/imaginary_7.16.1.loader.js",
+    dataUrl: "UnityBuild/imaginary_7.16.1.data",
+    frameworkUrl: "UnityBuild/imaginary_7.16.1.framework.js",
+    codeUrl: "UnityBuild/imaginary_7.16.1.wasm",
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='unityContainer'>
+      <Unity unityProvider={unityProvider} />
     </div>
   );
 }
+
 
 export default App;
